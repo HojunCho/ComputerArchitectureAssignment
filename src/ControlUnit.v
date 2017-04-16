@@ -49,37 +49,87 @@ module ControlUnit (clk, reset_n, num_inst, inst, ctrlSignals, bcond, is_halted)
 	end
 	
 	always @* begin
-		ctrlSignals[PCLatch] = state == ID ||state == EXE && reBcond;	// PC Latch
+		ctrlSignals[`PCLatch] = state == ID ||state == EXE && reBcond;	// PC Latch
 		
 		case (state)								 													// IorD
-			IF		: ctrlSignals[IorD] = 0;
-			MEM	: ctrlSignals[IorD] = 1;
-			default	: ctrlSignals[IorD] = X;
+			IF		: ctrlSignals[`IorD] = 0;
+			MEM	: ctrlSignals[`IorD] = 1;
+			default	: ctrlSignals[`IorD] = 1'bX;
 		endcase
 		
-		ctrlSignals[MemRead] = state == MEM && opCode == `SWD_OP;	// Memory Read
-		ctrlSignals[MemWrite] = state == MEM && opCode == `LWD_OP;	// Memory Write
-		ctrlSignals[IRWrite] = state == IF;													// IR Latch
+		ctrlSignals[`MemRead] = state == MEM && opCode == `SWD_OP;	// Memory Read
+		ctrlSignals[`MemWrite] = state == MEM && opCode == `LWD_OP;	// Memory Write
+		ctrlSignals[`IRWrite] = state == IF;													// IR Latch
 			
 		case (state)																					// PC Source
-			ID		: ctrlSignals[PCSrc] = opCode == `JMP_OP || opCode == `JAL_OP || opCode == `ALU_OP && (funcCode == INST_FUNC_JPR || funcCode == INST_FUNC_JRL);
-			EXE	: ctrlSignals[PCSrc] = 0;
-			default	: ctrlSignals[PCSrc] = X;
+			ID		: ctrlSignals[`PCSrc] = opCode == `JMP_OP || opCode == `JAL_OP || opCode == `ALU_OP && (funcCode == `INST_FUNC_JPR || funcCode == `INST_FUNC_JRL);
+			EXE	: ctrlSignals[`PCSrc] = 0;
+			default	: ctrlSignals[`PCSrc] = 1'bX;
 		endcase
 		
-		ctrlSignals[MemtoReg] = state == WB ? opCode == `LWD_OP : X;	// Mem to Register
+		ctrlSignals[`MemtoReg] = state == WB ? opCode == `LWD_OP : 1'bX;	// Mem to Register
+		ctrlSignals[`JSrc] = state == ID ?  opCode == `ALU_OP && (funcCode == `INST_FUNC_JPR || funcCode == `INST_FUNC_JRL) : 1'bX;	// Jump Source
 		
-		case (state)
-			IF, EXE, MEM	: ctrlSignals[RegWrite] = 0;
-			ID		: ctrlSignals[RegWrite] = opCode == `ALU_OP && (funcCode == INST_FUNC_JPR || funcCode == INST_FUNC_JRL);
-			WB	: ctrlSignals[RegWrite]
-		endcase	
+		case (state)								// Register Write
+			IF, EXE, MEM	: ctrlSignals[`RegWrite] = 0;
+			ID		: ctrlSignals[`RegWrite] = opCode == `JAL_OP || opCode == `ALU_OP && funcCode == `INST_FUNC_JRL;
+			WB	: ctrlSignals[`RegWrite] = 1;
+		endcase
+		
+		ctrlSignals[`SetWWD] = state == ID && opCode == `ALU_OP && funcCode == `INST_FUNC_WWD;		// Set WWD Value
+		
+		case (state)								// ALU Source A
+			IF, ID		: ctrlSignals[`ALUSrcA] = 0;
+			EXE		: ctrlSignals[`ALUSrcA] = 1;
+			default	: ctrlSignals[`ALUSrcA] = 1'bX;
+		endcase								  
+		
+		ctrlSignals[`IsLHI] = state == EXE ? opCode == `LHI_OP : 1'bX;		// LHI Operation
+		
+		case (state)								// Register Destination
+			ID			: ctrlSignals[`RegDest] = `RegDest_2;
+			WB		: ctrlSignals[`RegDest] = opCode == `ALU_OP ? `RegDest_rd : `RegDest_rt;
+			default	: ctrlSignals[`RegDest] = 2'bXX;
+		endcase
+		
+		case (state)								// ALU Source B
+			IF			: ctrlSignals[`ALUSrcB] = `ALUSrcB_1;
+			ID			: ctrlSignals[`ALUSrcB] = `ALUSrcB_E;
+			EXE		: begin
+				case (opCode)
+					`ALU_OP, `BNE_OP, `BEQ_OP	: ctrlSignals[`ALUSrcB] = `ALUSrcB_B;
+					`ADI_OP, `ORI_OP, `LHI_OP, `LWD_OP, `SWD_OP		: ctrlSignals[`ALUSrcB] = `ALUSrcB_E;
+					`BGZ_OP, `BLZ_OP	:ctrlSignals[`ALUSrcB] = `ALUSrcB_Z;
+				endcase
+			end
+			default	: ctrlSignals[`ALUSrcB] = 2'bX;
+		endcase
+		
+		case (state)								// ALU Operation
+			IF, ID		: ctrlSignals[`ALUop] = `FUNC_ADD;
+			EXE		: begin
+				case (opCode)
+					`ALU_OP	: ctrlSignals[`ALUop] = funcCode[2:0];
+					`ADI_OP, `LWD_OP, `SWD_OP	: ctrlSignals[`ALUop] = `FUNC_ADD;
+					`ORI_OP	: ctrlSignals[`ALUop] = `FUNC_ORR;
+					`BNE_OP, `BEQ_OP, `BGZ_OP, `BLZ_OP	: ctrlSignals[`ALUop] = `FUNC_SUB;
+				endcase
+			end
+			default	: ctrlSignals[`ALUop] = 3'bX;
+		endcase
+		
+		if (is_halted || opCode == `ALU_OP && funcCode == `INST_FUNC_HLT) begin	// HALT Operation
+			ctrlSignals = 0;
+			is_halted = 1;
+		end
 	end
 																	
 	always @ (posedge clk) begin
-		if (!reset_n)
+		if (!reset_n) begin
 			state <= IF;
-		else begin
+			is_halted = 0;
+		end
+		else if (!is_halted) begin
 			if (state == IF)
 				state <= ID;
 			else begin
