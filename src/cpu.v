@@ -11,7 +11,7 @@ module cpu (clk, reset_n, readM, writeM, address, data, num_inst, output_port, i
 	output is_halted;								// set if the cpu is halted
 	
 	wire [`WORD_SIZE-1:0] inst;		   
-	wire [`WORD_SIZE-1:0] ctrlSignals;	
+	wire [`CtrlSigNum-1:0] ctrlSignals;	
 	wire [`WORD_SIZE-1:0] bcond;		   
 									   						   	
 	// Datapath 
