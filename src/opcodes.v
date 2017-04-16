@@ -37,7 +37,9 @@
 `define INST_FUNC_JRL	6'd26
 `define INST_FUNC_HLT	6'd29
 
-// Control Signals 			
+// Control Signals
+`define CtrlSigNum	17
+
 `define	PCLatch		0
 `define	IorD				1
 `define	MemRead		2
@@ -45,21 +47,22 @@
 `define	IRWrite			4
 `define	PCSrc			5
 `define	MemtoReg	6
-`define	ALUSrcA		7
-`define	IsLHI				8
+`define	RegWrite		7
+`define	ALUSrcA		8
+`define	IsLHI				9
 
-`define	RegDest		10:9
+`define	RegDest		11:10
 `define	RegDest_rt	0
 `define	RegDest_rd	1
 `define	RegDest_2	2
 
-`define	ALUSrcB		12:11
+`define	ALUSrcB		13:12
 `define	ALUSrcB_B	0
 `define	ALUSrcB_1	1
 `define	ALUSrcB_R	2
 `define	ALUSrcB_S	3
 
-`define	ALUop			15:13
+`define	ALUop			16:14
 
 
 `define	WORD_SIZE	16			
