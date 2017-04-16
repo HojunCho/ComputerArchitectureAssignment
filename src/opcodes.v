@@ -48,18 +48,18 @@
 `define	ALUSrcA		7
 `define	IsLHI				8
 
-`define	RegDest		9:10
+`define	RegDest		10:9
 `define	RegDest_rt	0
 `define	RegDest_rd	1
 `define	RegDest_2	2
 
-`define	ALUSrcB		11:12
+`define	ALUSrcB		12:11
 `define	ALUSrcB_B	0
 `define	ALUSrcB_1	1
 `define	ALUSrcB_R	2
 `define	ALUSrcB_S	3
 
-`define	ALUop			13:15
+`define	ALUop			15:13
 
 
 `define	WORD_SIZE	16			
