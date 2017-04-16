@@ -1,0 +1,139 @@
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/ControlUnit.v
+# Pass 1. Scanning modules hierarchy.
+# Warning: VCP5047 opcodes.v : (9, 1): Circular `include dependency detected on file: opcodes.v.
+# Error: VCP2000 ControlUnit.v : (9, 10): Syntax error. Unexpected token: input[_INPUT]. Expected tokens: '=' , '[' , ')' , ',' , ';'.
+# Error: VCP2565 ControlUnit.v : (3, 51): Undefined direction of external port ctrlSignals.
+# Error: VCP2567 ControlUnit.v : (3, 51): Undefined direction of internal port ctrlSignals.
+# Compile failure 3 Errors 1 Warnings  Analysis time: 0[s].
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/opcodes.v
+# Pass 1. Scanning modules hierarchy.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Warning: VCP2640 No modules defined.
+# Running Optimizer.
+# ELB/DAG code generating.
+# $root top modules: *none*.
+# Compile success 0 Errors 1 Warnings  Analysis time: 1[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/ControlUnit.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Warning: VCP5047 opcodes.v : (9, 1): Circular `include dependency detected on file: opcodes.v.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Error: VCP5103 ControlUnit.v : (49, 28): Undeclared identifier: ALU_OP.
+# Error: VCP5103 ControlUnit.v : (50, 27): Undeclared identifier: ADI_OP.
+# Error: VCP5103 ControlUnit.v : (50, 35): Undeclared identifier: ORI_OP.
+# Error: VCP5103 ControlUnit.v : (50, 44): Undeclared identifier: LHI_OP.
+# Error: VCP5103 ControlUnit.v : (51, 29): Undeclared identifier: LWD_OP.
+# Error: VCP5103 ControlUnit.v : (52, 29): Undeclared identifier: SWD_OP.
+# Error: VCP5103 ControlUnit.v : (53, 27): Undeclared identifier: BNE_OP.
+# Error: VCP5103 ControlUnit.v : (53, 35): Undeclared identifier: BEQ_OP.
+# Error: VCP5103 ControlUnit.v : (53, 45): Undeclared identifier: BGZ_OP.
+# Error: VCP5103 ControlUnit.v : (53, 57): Undeclared identifier: BLZ_OP.
+# Error: VCP5103 ControlUnit.v : (54, 27): Undeclared identifier: JMP_OP.
+# Error: VCP5103 ControlUnit.v : (54, 37): Undeclared identifier: JAL_OP.
+# Compile failure 12 Errors 1 Warnings  Analysis time: 0[s].
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/opcodes.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Warning: VCP2640 No modules defined.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# $root top modules: *none*.
+# Compile success 0 Errors 1 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/ControlUnit.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Warning: VCP5047 opcodes.v : (9, 1): Circular `include dependency detected on file: opcodes.v.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Error: VCP5103 ControlUnit.v : (49, 28): Undeclared identifier: ALU_OP.
+# Error: VCP5103 ControlUnit.v : (50, 27): Undeclared identifier: ADI_OP.
+# Error: VCP5103 ControlUnit.v : (50, 35): Undeclared identifier: ORI_OP.
+# Error: VCP5103 ControlUnit.v : (50, 44): Undeclared identifier: LHI_OP.
+# Error: VCP5103 ControlUnit.v : (51, 29): Undeclared identifier: LWD_OP.
+# Error: VCP5103 ControlUnit.v : (52, 29): Undeclared identifier: SWD_OP.
+# Error: VCP5103 ControlUnit.v : (53, 27): Undeclared identifier: BNE_OP.
+# Error: VCP5103 ControlUnit.v : (53, 35): Undeclared identifier: BEQ_OP.
+# Error: VCP5103 ControlUnit.v : (53, 45): Undeclared identifier: BGZ_OP.
+# Error: VCP5103 ControlUnit.v : (53, 57): Undeclared identifier: BLZ_OP.
+# Error: VCP5103 ControlUnit.v : (54, 27): Undeclared identifier: JMP_OP.
+# Error: VCP5103 ControlUnit.v : (54, 37): Undeclared identifier: JAL_OP.
+# Compile failure 12 Errors 1 Warnings  Analysis time: 0[s].
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/ControlUnit.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Error: VCP5018 ControlUnit.v : (6, 24): Macro WORD_SIZE is not defined.
+# Error: VCP5018 ControlUnit.v : (7, 19): Macro WORD_SIZE is not defined.
+# Error: VCP5018 ControlUnit.v : (8, 25): Macro CtrlSigNum is not defined.
+# Error: VCP5018 ControlUnit.v : (9, 19): Macro WORD_SIZE is not defined.
+# Error: VCP5018 ControlUnit.v : (12, 36): Macro WORD_SIZE is not defined.
+# Error: VCP5018 ControlUnit.v : (12, 53): Macro WORD_SIZE is not defined.
+# Compile failure 6 Errors 0 Warnings  Analysis time: 0[s].
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/opcodes.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Warning: VCP2640 No modules defined.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# $root top modules: *none*.
+# Compile success 0 Errors 1 Warnings  Analysis time: 1[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/ControlUnit.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Warning: VCP5047 opcodes.v : (9, 1): Circular `include dependency detected on file: opcodes.v.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Error: VCP5103 ControlUnit.v : (49, 28): Undeclared identifier: ALU_OP.
+# Error: VCP5103 ControlUnit.v : (50, 27): Undeclared identifier: ADI_OP.
+# Error: VCP5103 ControlUnit.v : (50, 35): Undeclared identifier: ORI_OP.
+# Error: VCP5103 ControlUnit.v : (50, 44): Undeclared identifier: LHI_OP.
+# Error: VCP5103 ControlUnit.v : (51, 29): Undeclared identifier: LWD_OP.
+# Error: VCP5103 ControlUnit.v : (52, 29): Undeclared identifier: SWD_OP.
+# Error: VCP5103 ControlUnit.v : (53, 27): Undeclared identifier: BNE_OP.
+# Error: VCP5103 ControlUnit.v : (53, 35): Undeclared identifier: BEQ_OP.
+# Error: VCP5103 ControlUnit.v : (53, 45): Undeclared identifier: BGZ_OP.
+# Error: VCP5103 ControlUnit.v : (53, 57): Undeclared identifier: BLZ_OP.
+# Error: VCP5103 ControlUnit.v : (54, 27): Undeclared identifier: JMP_OP.
+# Error: VCP5103 ControlUnit.v : (54, 37): Undeclared identifier: JAL_OP.
+# Compile failure 12 Errors 1 Warnings  Analysis time: 0[s].
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/ControlUnit.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Warning: VCP5047 opcodes.v : (9, 1): Circular `include dependency detected on file: opcodes.v.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: ControlUnit.
+# $root top modules: ControlUnit.
+# Compile success 0 Errors 1 Warnings  Analysis time: 1[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/opcodes.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Warning: VCP2640 No modules defined.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# $root top modules: ControlUnit.
+# Compile success 0 Errors 1 Warnings  Analysis time: 1[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -

@@ -1,1 +1,30 @@
+timestamp=1492366853282
 
+[~A]
+LastVerilogToplevel=ControlUnit
+ModifyID=6
+Version=74
+c:/Users/Napping/OneDrive/Files/Codes/Verilog/Lab05/src/ControlUnit.v=0*6789*7826
+c:/Users/Napping/OneDrive/Files/Codes/Verilog/Lab05/src/opcodes.v=0*5411*5756
+
+[$root]
+A/$root=22|||1*3552
+BinI32/$root=3*4451
+SLP=3*4555
+Version=10.4.183.6396  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|c73a565f2ade592f8ac1c68f484c921670518b4ea3ce4e94d50f2f9ec703c7a6
+
+[ControlUnit]
+A/ControlUnit=22|./../src/ControlUnit.v|3|1*3926
+BinI32/ControlUnit=3*4623
+R=./../src/ControlUnit.v|3
+SLP=3*7034
+Version=10.4.183.6396  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|0dc9d995053bfcd284d27d4b39f3dbe96e13ddcddf1236a683baa337e5d9976bae9700bea9d97994182eb472a77c7e05
+
+[~MFT]
+0=6|0Lab05.mgf|7826|4324
+1=4|1Lab05.mgf|3926|3552
+3=8|3Lab05.mgf|7034|4451
+
+[~U]
+$root=12|0*6318|
+ControlUnit=12|0*6484||0x10

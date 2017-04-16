@@ -2,4 +2,16 @@
 TemplateId=2
 [OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\Memory.v|]
 TemplateId=2
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\opcodes.v|]
+TemplateId=2
 ActiveDocument=1
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\cpu.v|]
+TemplateId=2
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\ControlUnit.v|]
+TemplateId=2
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\Datapath.v|]
+TemplateId=2
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\alu.v|]
+TemplateId=2
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\register_files.v|]
+TemplateId=2
