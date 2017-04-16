@@ -1,2 +1,8 @@
-.\src\cpu_TB.v
+.\src\opcodes.v
+.\src\alu.v
+.\src\register_files.v
+.\src\Datapath.v
+.\src\ControlUnit.v
+.\src\cpu.v
 .\src\Memory.v
+.\src\cpu_TB.v

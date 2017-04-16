@@ -36,17 +36,31 @@ CompileWithDebug=0
 Lab05=.
 Active_lib=
 
-[Files]
-/cpu_TB.v=-1
-/Memory.v=-1
-
-[Files.Data]
-.\src\cpu_TB.v=Verilog Source Code
-.\src\Memory.v=Verilog Source Code
-
 [SpecTracer]
 WindowVisible=0
+
 [HierarchyViewer]
 HierarchyInformation=
 ShowHide=ShowTopLevel
 Selected=
+
+[Files]
+/opcodes.v=-1
+/alu.v=-1
+/register_files.v=-1
+/Datapath.v=-1
+/ControlUnit.v=-1
+/cpu.v=-1
+/Memory.v=-1
+/cpu_TB.v=-1
+
+[Files.Data]
+.\src\opcodes.v=Verilog Source Code
+.\src\alu.v=Verilog Source Code
+.\src\register_files.v=Verilog Source Code
+.\src\Datapath.v=Verilog Source Code
+.\src\ControlUnit.v=Verilog Source Code
+.\src\cpu.v=Verilog Source Code
+.\src\Memory.v=Verilog Source Code
+.\src\cpu_TB.v=Verilog Source Code
+

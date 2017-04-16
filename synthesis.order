@@ -1,0 +1,4 @@
+i<>.\src\opcode.v
+i<>.\src\cpu.v
+i<>.\src\ControlUnit.v
+i<>.\src\Datapath.v
