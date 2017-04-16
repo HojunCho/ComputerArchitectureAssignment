@@ -8,14 +8,11 @@
 module cpu_TB();
 	reg reset_n;    // active-low RESET signal
 	reg clk;        // clock signal	
-	
-	wire readM1;
-	wire [`WORD_SIZE-1:0] address1;
-	wire [`WORD_SIZE-1:0] data1;
-	wire readM2;
-	wire writeM2;
-	wire [`WORD_SIZE-1:0] address2;
-	wire [`WORD_SIZE-1:0] data2;
+														   
+	wire readM;
+	wire writeM;
+	wire [`WORD_SIZE-1:0] address;
+	wire [`WORD_SIZE-1:0] data;
 
 	// for debuging purpose
 	wire [`WORD_SIZE-1:0] num_inst;		// number of instruction during execution
@@ -23,8 +20,8 @@ module cpu_TB();
 	wire is_halted;				// set if the cpu is halted
 
 	// instantiate the unit under test
-	cpu UUT (clk, reset_n, readM1, address1, data1, readM2, writeM2, address2, data2, num_inst, output_port, is_halted);
-	Memory NUUT(!clk, reset_n, readM1, address1, data1, readM2, writeM2, address2, data2);
+	cpu UUT (clk, reset_n, readM, writeM, address, data, num_inst, output_port, is_halted);
+	Memory NUUT(!clk, reset_n, readM, writeM, address, data);
 
 	// initialize inputs
 	initial begin

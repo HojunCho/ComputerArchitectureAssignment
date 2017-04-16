@@ -4,32 +4,25 @@
 `define WORD_SIZE 16	//	instead of 2^16 words to reduce memory
 			//	requirements in the Active-HDL simulator 
 
-module Memory(clk, reset_n, readM1, address1, data1, readM2, writeM2, address2, data2);
+module Memory(clk, reset_n, readM, writeM, address, data);
 	input clk;
 	wire clk;
 	input reset_n;
 	wire reset_n;
-	
-	input readM1;
-	wire readM1;
-	input [`WORD_SIZE-1:0] address1;
-	wire [`WORD_SIZE-1:0] address1;
-	output data1;
-	reg [`WORD_SIZE-1:0] data1;
-	
-	input readM2;
-	wire readM2;
-	input writeM2;
-	wire writeM2;
-	input [`WORD_SIZE-1:0] address2;
-	wire [`WORD_SIZE-1:0] address2;
-	inout data2;
-	wire [`WORD_SIZE-1:0] data2;
+												
+	input readM;
+	wire readM;
+	input writeM;
+	wire writeM;
+	input [`WORD_SIZE-1:0] address;
+	wire [`WORD_SIZE-1:0] address;
+	inout data;
+	wire [`WORD_SIZE-1:0] data;
 	
 	reg [`WORD_SIZE-1:0] memory [0:`MEMORY_SIZE-1];
 	reg [`WORD_SIZE-1:0] outputData2;
 	
-	assign data2 = readM2?outputData2:`WORD_SIZE'bz;
+	assign data = readM?outputData:`WORD_SIZE'bz;
 	
 	always@(posedge clk)
 		if(!reset_n)
@@ -235,9 +228,8 @@ module Memory(clk, reset_n, readM1, address1, data1, readM2, writeM2, address2, 
 				memory[16'hc6] <= 16'hf01d;
 			end
 		else
-			begin
-				if(readM1)data1 <= (writeM2 & address1==address2)?data2:memory[address1];
-				if(readM2)outputData2 <= memory[address2];
-				if(writeM2)memory[address2] <= data2;
+			begin																															   
+				if(readM)outputData <= memory[address];
+				if(writeM)memory[address] <= data;
 			end
 endmodule
