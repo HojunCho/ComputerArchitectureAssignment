@@ -1,0 +1,14 @@
+[Version]
+Version=10.4
+[Designs]
+Lab05=Lab05.adf
+[Settings]
+Active=Lab05
+[Expand]
+lab05=1
+[Browser]
+sort=order
+mode=none
+[Order]
+order=1
+macro=
