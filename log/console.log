@@ -136,4 +136,17 @@ alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/opcodes.v
 # Compile success 0 Errors 1 Warnings  Analysis time: 1[s].
 # Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
 # done
-alog -O2 -
+alog -O2 -sve -msg 5 -sv2k12 -work Lab05 $dsn/src/ControlUnit.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Warning: VCP5047 opcodes.v : (9, 1): Circular `include dependency detected on file: opcodes.v.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: ControlUnit.
+# $root top modules: ControlUnit.
+# Compile success 0 Errors 1 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
