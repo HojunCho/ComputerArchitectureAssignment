@@ -14,18 +14,16 @@ module RegisterFiles(ctrlRegWrite, readReg1, readReg2, writeReg, writeData, clk,
 	reg [`WORD_SIZE-1:0] registers[`NUM_REGS-1:0];		 
 	
 	integer i;
-	
-	always @(posedge reset_n) begin
-		for (i=0; i<`NUM_REGS; i++)
-			registers[i] <= 0;
-	end
-	
+									
 	assign readData1 = registers[readReg1];	
-	
 	assign readData2 = registers[readReg2];   
 	
 	always @(posedge clk) begin
-		if (ctrlRegWrite)
+		if (!reset_n) begin				   			
+			for (i=0; i<`NUM_REGS; i++)
+				registers[i] <= 0;
+		end
+		else if (ctrlRegWrite)
 			registers[writeReg] <= writeData;																	   
 	end
 	
