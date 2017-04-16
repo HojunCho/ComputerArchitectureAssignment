@@ -59,8 +59,7 @@
 `define	ALUSrcB		13:12
 `define	ALUSrcB_B	0
 `define	ALUSrcB_1	1
-`define	ALUSrcB_R	2
-`define	ALUSrcB_S	3
+`define	ALUSrcB_E	2  
 
 `define	ALUop			16:14
 
